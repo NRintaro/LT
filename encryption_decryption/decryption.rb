@@ -21,7 +21,7 @@ ascii_code = cryptogram.unpack("c*") # アルファベット => アスキーコ�
   end
 
   decrypted = subtracted.pack("c*") # アスキーコード => アルファベッド
-  puts "#{num} : #{decrypted}"
+  puts "#{num} : #{decrypted}(#{subtracted})"
 end
 
 
