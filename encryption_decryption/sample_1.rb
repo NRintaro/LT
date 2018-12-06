@@ -1,9 +1,9 @@
 #
-# Sample code to decrypt
+# Sample code to decrypt with 0~9
 #
-# cryptogram : 暗号文
-# decrypted  : 復号文
-# subtracted : 引算した後のascii_codeの値を一時的に格納した値.
+# cryptogram : 暗号文.
+# decrypted_text  : 復号文.
+# calculation_result : 引算した後のascii_codeの値を一時的に格納.
 #
 # TODO: unpack/pack の c* について調べる.
 
@@ -15,15 +15,15 @@ ascii_code = cryptogram.unpack("c*") # アルファベット => アスキーコ�
 
 # 0~9で引いた後、復号化して出力.
 (0..9).to_a.each do |num|
-  subtracted = []
-  decrypted = []
+  calculation_result = []
+  decrypted_text = []
 
   ascii_code.each do |item|
-    subtracted.push(item - num)
+    calculation_result.push(item - num)
   end
 
-  decrypted = subtracted.pack("c*") # アスキーコード => アルファベッド
-  puts "#{num} : #{decrypted} : #{subtracted}"
+  decrypted_text = calculation_result.pack("c*") # アスキーコード => アルファベッド
+  puts "#{num} : #{decrypted_text} : #{calculation_result}"
 end
 
 
