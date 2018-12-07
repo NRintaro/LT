@@ -11,11 +11,10 @@
 puts "平文を入力して下さい (例. OLIVA)"
 plaintext = gets.chop # 文字列の最後に打ったキャリッジリターンが入るので chop で取り除く.
 puts "鍵を入力して下さい (例. 345)"
-secret_key = gets.chop
+secret_key = gets.chop.split("") # "345" => ["3", "4", "5"]
 puts "-----------------------------------"
 
 ascii_code = plaintext.unpack("c*") # アルファベット => アスキーコード.
-secret_key = secret_key.split("")
 regression_index = 0
 calculation_result = []
 
