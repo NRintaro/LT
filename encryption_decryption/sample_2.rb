@@ -1,5 +1,5 @@
 #
-# Sample code to encrypt with 345
+# Sample code to encrypt with inputed_key
 #
 # plaintext  : 平文.
 # cryptogram : 暗号文.
@@ -10,20 +10,20 @@
 # 入力.
 puts "平文を入力して下さい (例. OLIVA)"
 plaintext = gets.chop # 文字列の最後に打ったキャリッジリターンが入るので chop で取り除く.
+puts "鍵を入力して下さい (例. 345)"
+secret_key = gets.chop
 puts "-----------------------------------"
 
-# アルファベット => アスキーコード.
-ascii_code = plaintext.unpack("c*")
-
-# 鍵(345)を繰り返し足す.
-calculation_result = []
-secret_key = [3, 4, 5]
+ascii_code = plaintext.unpack("c*") # アルファベット => アスキーコード.
+secret_key = secret_key.split("")
 regression_index = 0
+calculation_result = []
 
+# 鍵を繰り返し足す.
 ascii_code.each do |item|
-  calculation_result.push(item + secret_key[regression_index])
+  calculation_result.push(item + secret_key[regression_index].to_i)
   regression_index += 1
-  regression_index = 0 if regression_index > 2
+  regression_index = 0 if regression_index > secret_key.length - 1
 end
 
 # アスキーコード => アルファベッド
