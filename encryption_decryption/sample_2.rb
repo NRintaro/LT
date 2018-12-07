@@ -11,7 +11,9 @@
 puts "平文を入力して下さい (例. OLIVA)"
 plaintext = gets.chop # 文字列の最後に打ったキャリッジリターンが入るので chop で取り除く.
 puts "-----------------------------------"
-ascii_code = plaintext.unpack("c*") # アルファベット => アスキーコード.
+
+# アルファベット => アスキーコード.
+ascii_code = plaintext.unpack("c*")
 
 # 鍵(345)を繰り返し足す.
 calculation_result = []
@@ -19,14 +21,17 @@ secret_key = [3, 4, 5]
 regression_index = 0
 
 ascii_code.each do |item|
-  puts regression_index
   calculation_result.push(item + secret_key[regression_index])
   regression_index += 1
   regression_index = 0 if regression_index > 2
 end
 
-cryptogram = calculation_result.pack("c*") # アスキーコード => アルファベッド
-puts "平文   : #{plaintext} #{ascii_code}
-暗号文 : #{cryptogram} #{calculation_result}"
+# アスキーコード => アルファベッド
+cryptogram = calculation_result.pack("c*")
+
+puts <<"EOS"
+平文   : #{plaintext} #{ascii_code}
+暗号文 : #{cryptogram} #{calculation_result}
+EOS
 
 
