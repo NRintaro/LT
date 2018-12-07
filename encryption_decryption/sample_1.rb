@@ -11,7 +11,9 @@
 puts "暗号文を入力して下さい (例. ROLYD)"
 cryptogram = gets.chop # 文字列の最後に打ったキャリッジリターンが入るので chop で取り除く.
 puts "-----------------------------------"
-ascii_code = cryptogram.unpack("c*") # アルファベット => アスキーコード.
+
+# アルファベット => アスキーコード.
+ascii_code = cryptogram.unpack("c*")
 
 # 0~9で引いた後、復号化して出力.
 (0..9).to_a.each do |num|
@@ -23,6 +25,7 @@ ascii_code = cryptogram.unpack("c*") # アルファベット => アスキーコ�
   end
 
   decrypted_text = calculation_result.pack("c*") # アスキーコード => アルファベッド
+
   puts "#{num} : #{decrypted_text} : #{calculation_result}"
 end
 
