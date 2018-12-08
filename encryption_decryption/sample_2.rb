@@ -14,7 +14,7 @@ puts "鍵を入力して下さい (例. 345)"
 secret_key = gets.chop.split("") # "345" => ["3", "4", "5"]
 puts "-----------------------------------"
 
-ascii_code = plaintext.unpack("c*") # アルファベット => アスキーコード.
+ascii_code = plaintext.unpack("c*") # "OLIVA" => [79, 76, 73, 86, 65]
 regression_index = 0
 calculation_result = []
 
@@ -25,7 +25,7 @@ ascii_code.each do |item|
   regression_index = 0 if regression_index > secret_key.length - 1
 end
 
-# アスキーコード => アルファベッド
+# [82, 80, 78, 89, 69] => "RPNYE"
 cryptogram = calculation_result.pack("c*")
 
 puts <<"EOS"
